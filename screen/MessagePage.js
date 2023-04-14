@@ -19,9 +19,7 @@ const MessagePage = ({navigation}) => {
         backgroundColor="#7CA539"
       />
 
-    </View>
- 
-          
+    </View>       
   </View>
   </View>
   
