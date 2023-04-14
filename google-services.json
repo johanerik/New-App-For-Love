@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "561702940431",
+    "project_id": "loveapp-c2b61",
+    "storage_bucket": "loveapp-c2b61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561702940431:android:ab47eaba19e9d5800a987a",
+        "android_client_info": {
+          "package_name": "com.foxconn.loveapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561702940431-1v0rm6s7bvji5r4jamj89iefd7nq62cf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxkDdGA0e6zX2pSfv3o88NdHTWnTOMK_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561702940431-1v0rm6s7bvji5r4jamj89iefd7nq62cf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
