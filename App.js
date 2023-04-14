@@ -3,10 +3,8 @@ import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Image ,Animated  }
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MainStack from '../faceapp/navigation/MainStack';
 
-//Backend de la app
+//Backend de la app Y Front de la app
 const App = () => {
- 
-//Todo el front de la app
   return (
     <SafeAreaView style = {{flex: 1}}>
 
