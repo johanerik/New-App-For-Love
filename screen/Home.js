@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Image ,Animated  } from 'react-native';
-
+import { View, Text, StyleSheet,TextInput, StatusBar, TouchableOpacity, Image ,Animated, KeyboardAvoidingView   } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import SearchInput from '../Components/SearchInput';
 //Backend de la app
-const App = ( {navigation}) => {
+const App = ({navigation}) => {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(new Animated.Value(100));
   const [footerWidth, setFooterWidth] = useState(new Animated.Value(400));
@@ -39,15 +41,12 @@ const App = ( {navigation}) => {
       }
     }
   };
-
   const headerStyle = {
     backgroundColor: isMenuOpen ? '#7CA539' : '#7CA539',
   };
-
   const footerStyle = {
     backgroundColor: isMenuOpen ? '#7CA539' : '#7CA539',
   };
-
   const animatedHeaderStyle = {
     ...styles.header,
     ...headerStyle,
@@ -55,109 +54,131 @@ const App = ( {navigation}) => {
     borderBottomLeftRadius: isMenuOpen ? 30 : 30,
     borderBottomRightRadius: isMenuOpen ? 30 : 30,
   };
-  
   const menuButtonStyle = {
     transform: [{ rotate: rotateDeg }],
   };
-//Todo el front de la app
+
+ const [searchText, setSearchText] = useState('');
+ //Todo el front de la app
   return (
-    <View style={styles.container}>
-    <StatusBar backgroundColor='#7CA539' />
-    <Animated.View style={animatedHeaderStyle}>
-      <TouchableOpacity style={[styles.menuButton, menuButtonStyle]} onPress={handleMenuPress}>
-        <Image source={require('../assets/icons/menu.png')} style={[styles.icon, { width: 50, height: 50 }]} />
-      </TouchableOpacity>
-      <Text style={styles.headerText}>True Love</Text>
-      <TouchableOpacity style={styles.heartButton} onPress={() =>{ navigation.navigate('Notify')}}>
-        <Image source={require('../assets/icons/heart.png')} style={[styles.icon, { width: 50, height: 50 }]} />
-      </TouchableOpacity>
-    </Animated.View>
-    <View style={styles.content}>
-      <Image source={require('../assets/img/app.png')} style={[styles.img, { width: 390, height: 390}]} ></Image>
-    </View>
-    <Animated.View style={styles.footer}>
-      <TouchableOpacity style={styles.mess} onPress={() =>{ navigation.navigate('Message')}}>
-        <Image source={require('../assets/icons/date.png')} style={[styles.icon, { width: 55, height: 55}]}/>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.date} onPress={() =>{ navigation.navigate('Match')}}>
-        <Image source={require('../assets/icons/datec.png')} style={[styles.icon, { width: 55, height: 55}]}/>
-      </TouchableOpacity>
-    </Animated.View>
-  </View>
+
+    <KeyboardAwareScrollView  style={styles.container} contentContainerStyle={styles.contentContainer}>
+      {/* Cambio de color de barra de tareas */}
+      <StatusBar backgroundColor='#7CA539'/>
+      {/* header con boton,notify, y search */}
+        <View style={styles.headerContainer}>
+            <TouchableOpacity>
+                <Image source={require('../assets/icons/menu.png')} style={styles.icon} ></Image>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <Image source={require('../assets/icons/notify.png')} style={styles.iconN} ></Image>
+            </TouchableOpacity>
+            <Text style={styles.textHome}>Home Love</Text>
+            <View style={[styles.containerImg, { width: 35, height: 35 }]}>
+              <Image source={require('../assets/icons/lOGOaPP.png')} style={[styles.image, { width: 35, height: 35 }]}/>
+            </View>
+        </View>
+         {/* TextInput*/}
+        <View style={styles.inputContainer}>    
+            <SearchInput 
+              placeholder="Buscar  "
+              onChangeText={(text) => setSearchText(text)}
+              value={searchText}
+            />    
+        </View>
+       {/* Contenido general de la apliacion*/}
+        <View style={styles.content}>
+          
+        </View>
+
+    </KeyboardAwareScrollView>
   );
 };
 //Estilos de botones, header, footer y container
 const styles = StyleSheet.create({
+  containerImg: {
+    borderRadius: 1000, 
+    overflow: 'hidden',
+    top:75,
+    left:60
+  },
+  image: {
+    resizeMode: 'cover',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#EBF3DD',
+    backgroundColor: '#7CA539',
+  },
+  contentContainer: {
+    flexGrow:1,
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 50,
   },
   header: {
     height: 100,
     width: '100%',
     backgroundColor: '#7CA539',
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
     alignItems: 'flex-start',
     justifyContent: 'center',
     flexDirection: 'row',
   },
-  menuButton: {
-    position: 'absolute',
-    left: 20,
-    top:25
-  },
-  heartButton: {
-    position: 'absolute',
-    right: 20,
-    top:25
-  },
-  headerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fff',
-    position: 'absolute',
-    top:35
+  headerContainer: {
+    top: -25,
+    left: -170
   },
   content: {
-    flex: 1,
-    width: '100%',
-    backgroundColor: '#EBF3DD',
+    width: 400,
+    height:800,
+    backgroundColor: '#EEEEEE',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    padding: 20,
-  },
-  footer: {
-    height: 90,
-    width: '100%',
-    backgroundColor: '#7CA539',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    padding: 200,
+    position: 'absolute',
+    top: 120
   },
   icon: {
     width: 24,
     height: 24,
     tintColor: '#fff',
-  },
-  mess:{
     position: 'absolute',
-    right: 60,
-    top: 20
+    top: -5,
+    left:13
   },
-  date:{
+  iconN:{
+    width: 24,
+    height: 24,
+    tintColor: '#fff',
     position: 'absolute',
-    right: 170,
-    top: 20
+    top: -5,
+    left:343
   },
-  img:{
-    position: 'absolute',
-    right:2,
-    top:100
-
-  }
-
+  inputContainer: {
+    width: '85%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    top: 12
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#CCCCCC',
+    borderRadius: 15,
+    padding: 10,
+    marginVertical: 10,
+    width: '110%',
+    fontSize: 16,
+    backgroundColor: '#FFFFFF'
+  },
+   textHome:{
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: -110,
+    marginRight:-90,
+    right:-106,
+    top:-6,
+    color: '#FFFFFF'
+   }
 });
 
 export default App;
