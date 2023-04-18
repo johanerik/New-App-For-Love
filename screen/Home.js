@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet,TextInput, StatusBar, TouchableOpacity, Image ,Animated, KeyboardAvoidingView   } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import SearchInput from '../Components/SearchInput';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Omboarding from '../Components/onboarding'
+import BottomTab from '../Components/bottomTab'
+import { NavigationContainer } from '@react-navigation/native';
 //Backend de la app
 const App = ({navigation}) => {
 
@@ -87,15 +91,65 @@ const App = ({navigation}) => {
             />    
         </View>
        {/* Contenido general de la apliacion*/}
-        <View style={styles.content}>
-          
+       
+        <View style={styles.onboard}>
+        
+       <View style={styles.viewA}></View>
+       <View style={styles.viewB}></View>
+       <View style={styles.viewC}></View>
+       <View style={styles.viewD}></View>
+       <Omboarding/>
+    
         </View>
-
+        
     </KeyboardAwareScrollView>
   );
 };
 //Estilos de botones, header, footer y container
 const styles = StyleSheet.create({
+    onboard:{
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+  },
+  
+  viewA: {
+    width: '100%',
+    height: 850,
+    backgroundColor: '#E6E6E6',
+    position: 'absolute',
+    top: 25,
+    right: -0,
+    borderRadius: 40
+  },
+  
+  viewB: {
+    width: 370,
+    height: 120,
+    backgroundColor: '#ffff',
+    position: 'absolute',
+    top: 44,
+    left: 10,
+    borderRadius:25
+  },
+  viewC: {
+    width: 370,
+    height: 190,
+    backgroundColor: '#ffff',
+    position: 'absolute',
+    top: 175,
+    left: 10,
+    borderRadius:25
+  },
+  viewD: {
+    width: 370,
+    height: 190,
+    backgroundColor: '#ffff',
+    position: 'absolute',
+    top: 376,
+    left: 10,
+    borderRadius:25
+  },
   containerImg: {
     borderRadius: 1000, 
     overflow: 'hidden',
@@ -152,7 +206,7 @@ const styles = StyleSheet.create({
     tintColor: '#fff',
     position: 'absolute',
     top: -5,
-    left:343
+    left:340
   },
   inputContainer: {
     width: '85%',

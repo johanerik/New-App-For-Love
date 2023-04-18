@@ -6,37 +6,39 @@ import MatchPage from '../screen/MatchPage'
 import MessagePage from '../screen/MessagePage'
 import Notify from '../screen/Notify'
 import Login from '../screen/Login'
-const Stack = createNativeStackNavigator()
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 function MainStack() {
     return (
       <NavigationContainer>
-        <Stack.Navigator 
+        <Tab.Navigator 
             screenOptions={{
                 headerShown: false,
             }}>
-          <Stack.Screen
+          <Tab.Screen
             name='Login'
             component={Login}
           />
-          <Stack.Screen 
+          <Tab.Screen 
             name="Home" 
             component={Home}
           /> 
-          <Stack.Screen
+          <Tab.Screen
             name ="Match"
             component={MatchPage}
           />
-          <Stack.Screen
+          <Tab.Screen
               name='Message'
               component={MessagePage}
           />
-          <Stack.Screen
+          <Tab.Screen
             name='Notify'
             component={Notify}
           />
-        </Stack.Navigator>
+        </Tab.Navigator>
       </NavigationContainer>
     );
   }
+  
 export default MainStack

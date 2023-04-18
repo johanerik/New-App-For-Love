@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Image ,Animated  } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import MainStack from './navigation/MainStack'
-
+import * as React from 'react';
+import { Text, View,StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MainStack from './navigation/MainStack';
 //Backend de la app Y Front de la app
+
+const Tab = createBottomTabNavigator();
 const App = () => {
   return (
-    <SafeAreaView style = {{flex: 1}}>
-
-        <MainStack />
-
-    </SafeAreaView>
+        <MainStack/>
   );
 };
 //Estilos de botones, header, footer y container

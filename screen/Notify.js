@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Image ,Animated  } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import MainStack from '../navigation/MainStack'
 
-
-//Backend de la app
-const Match = (navigation) => {
- 
-//Todo el front de la app
+//Backend de la app Y Front de la app
+const AppHome = () => {
   return (
-  <View>
+    <SafeAreaView style = {{flex: 1}}>
 
-        <Text>
-            Notify
-        </Text>
-  </View>
-  
-  
+       
+
+    </SafeAreaView>
   );
 };
 //Estilos de botones, header, footer y container
@@ -29,4 +25,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Match;
+export default AppHome;
