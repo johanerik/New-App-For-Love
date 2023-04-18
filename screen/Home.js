@@ -68,7 +68,8 @@ const App = ({navigation}) => {
 
     <KeyboardAwareScrollView  style={styles.container} contentContainerStyle={styles.contentContainer}>
       {/* Cambio de color de barra de tareas */}
-      <StatusBar backgroundColor='#7CA539'/>
+      
+
       {/* header con boton,notify, y search */}
         <View style={styles.headerContainer}>
             <TouchableOpacity>
