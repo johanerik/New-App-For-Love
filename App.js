@@ -24,6 +24,8 @@ const Tab1Screen = () => {
   return (
   
     <Home/>
+     
+    {/* */} 
   
   );
 };
