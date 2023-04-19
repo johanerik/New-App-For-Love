@@ -82,11 +82,6 @@ const App = ({navigation}) => {
         </View>
         <View style={styles.onboard}>
         
-       <View style={styles.viewA}></View>
-       <View style={styles.viewB}></View>
-       <View style={styles.viewC}></View>
-       <View style={styles.viewD}></View>
-       <Omboarding/>
     
         </View>
         
