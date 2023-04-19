@@ -5,8 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 //Backend de la app Y Front de la app
 const AppHome = () => {
   return (
+    
     <SafeAreaView style = {{flex: 1}}>
-
+      <StatusBar backgroundColor='#EBF3DD' />
        
 
     </SafeAreaView>

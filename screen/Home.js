@@ -4,11 +4,13 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import SearchInput from '../Components/SearchInput';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Omboarding from '../Components/onboarding'
-import BottomTab from '../Components/bottomTab'
 import { NavigationContainer } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
 //Backend de la app
 const App = ({navigation}) => {
-
+  const [fontsLoaded] = useFonts({
+    'Aliqa': require('../assets/fonts/Aliqa.ttf'),
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(new Animated.Value(100));
   const [footerWidth, setFooterWidth] = useState(new Animated.Value(400));
@@ -65,34 +67,19 @@ const App = ({navigation}) => {
  const [searchText, setSearchText] = useState('');
  //Todo el front de la app
   return (
-
+    
     <KeyboardAwareScrollView  style={styles.container} contentContainerStyle={styles.contentContainer}>
       {/* Cambio de color de barra de tareas */}
       
-
+      <StatusBar backgroundColor='#7CA539' />
       {/* header con boton,notify, y search */}
         <View style={styles.headerContainer}>
-            <TouchableOpacity>
-                <Image source={require('../assets/icons/menu.png')} style={styles.icon} ></Image>
-            </TouchableOpacity>
-            <TouchableOpacity>
-                <Image source={require('../assets/icons/notify.png')} style={styles.iconN} ></Image>
-            </TouchableOpacity>
-            <Text style={styles.textHome}>Home Love</Text>
+           
+            <Text style={styles.textHome}>Love & More</Text>
             <View style={[styles.containerImg, { width: 35, height: 35 }]}>
               <Image source={require('../assets/icons/lOGOaPP.png')} style={[styles.image, { width: 35, height: 35 }]}/>
             </View>
         </View>
-         {/* TextInput*/}
-        <View style={styles.inputContainer}>    
-            <SearchInput 
-              placeholder="Buscar  "
-              onChangeText={(text) => setSearchText(text)}
-              value={searchText}
-            />    
-        </View>
-       {/* Contenido general de la apliacion*/}
-       
         <View style={styles.onboard}>
         
        <View style={styles.viewA}></View>
@@ -119,9 +106,9 @@ const styles = StyleSheet.create({
     height: 850,
     backgroundColor: '#E6E6E6',
     position: 'absolute',
-    top: 25,
+    top: 2,
     right: -0,
-    borderRadius: 40
+    borderRadius: 0
   },
   
   viewB: {
@@ -154,8 +141,8 @@ const styles = StyleSheet.create({
   containerImg: {
     borderRadius: 1000, 
     overflow: 'hidden',
-    top:75,
-    left:60
+    top:65,
+    left:335
   },
   image: {
     resizeMode: 'cover',
@@ -167,7 +154,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     flexGrow:1,
     alignItems: 'center',
-    paddingTop: 50,
+    paddingTop: 55,
   },
   header: {
     height: 100,
@@ -226,13 +213,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF'
   },
    textHome:{
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: -110,
     marginRight:-90,
-    right:-106,
-    top:-6,
-    color: '#FFFFFF'
+    right:-10,
+    top:-14,
+    color: '#FFFFFF',
+    fontFamily:'Aliqa'
    }
 });
 
